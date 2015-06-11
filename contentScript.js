@@ -10,12 +10,14 @@
 	    reportError(error);
 	}
 
+    var counter = 0;
+
 	window.onscroll = function() {
 	    if ((document.body.offsetHeight + document.body.scrollTop) === document.body.scrollHeight){
-
 	    	//if url has changed, reset currentUrl and selector
 	    	if (currentUrl !== location.href){
-	    		
+
+                counter = 0;
 	    		currentUrl = location.href;
 	    		
 	    		try {
@@ -26,9 +28,10 @@
 				}
 
 	    	}
-	        
-	        if (selector){
+
+	        if (selector && (counter === 0)){
 	        	selector.click();
+                counter = 1;
 	        }
 	    	
 	    }        
@@ -40,12 +43,9 @@
 
 	function setSelector(){
 		//check if we're on a profile page or the main feed. cache the appropriate selector.
-		var selectorTmp = null;
-		if (document.querySelector('body.UserProfile')){
-			selectorTmp = document.querySelector('.PhotoGridMoreButton');
-		}
-		else {
-		   selectorTmp = document.querySelector('#react-root > div > div > div > div > div > div.timelineItem.timelineLast > div.timelineCenter > a');
+		var selectorTmp = document.querySelector('#react-root > section > main > article > div > div.-cx-PRIVATE-AutoloadingPostsGrid__moreLoadingIndicator > a');
+		if (!selectorTmp){
+		   selectorTmp = document.querySelector('#react-root > section > main > section > div > div.-cx-PRIVATE-AutoloadingPostsGrid__moreLoadingIndicator > a');
 		}
 
 		if (!selectorTmp){
