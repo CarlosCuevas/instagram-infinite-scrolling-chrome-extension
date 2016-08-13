@@ -1,12 +1,11 @@
 {
   "manifest_version": 2,
 
-  "name": "Instagram Infinite Scrolling",
-  "description": "Enables infinite scrolling on Instagram.com",
-  "version": "0.6.0",
+  "name": "Infinite Scrolling for Instagram",
+  "description": "Enables infinite scrolling on Instagram",
+  "version": "0.6.1",
   "homepage_url": "https://github.com/CarlosCuevas",
   "icons": {
-    "16": "icons/icon16.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
