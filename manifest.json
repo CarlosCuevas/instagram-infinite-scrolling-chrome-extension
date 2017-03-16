@@ -3,7 +3,7 @@
 
   "name": "Infinite Scrolling for Instagram",
   "description": "Enables infinite scrolling on Instagram",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "homepage_url": "https://github.com/CarlosCuevas",
   "icons": {
     "48": "icons/icon48.png",

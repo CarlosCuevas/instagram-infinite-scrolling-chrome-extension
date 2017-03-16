@@ -2,26 +2,28 @@
 	'use strict';
 
 	// initialize url
-	var currentUrl = location.href;
+	let currentUrl = location.href;
 
 	// only need to click once
-    var counter = 0;
+    let alreadyClicked = false;
+
+    const selector = '#react-root > section > main > article > div > a';
 
     // try to load selector in case we're already on a profile page
-    var selector = document.querySelector('#react-root > section > main > article > div > div._pupj3 > a');
+    let loadMoreButton = document.querySelector(selector);
 
 	window.onscroll = function() {
 	    if ((document.body.offsetHeight + document.body.scrollTop) === document.body.scrollHeight){
 	    	//if url has changed, reset currentUrl and selector
 	    	if (currentUrl !== location.href){
-                counter = 0;
+                alreadyClicked = false;
 	    		currentUrl = location.href;
-	    		selector = document.querySelector('#react-root > section > main > article > div > div._pupj3 > a');
+	    		loadMoreButton = document.querySelector(selector);
 	    	}
 
-	        if (selector && (counter === 0)) {
-	        	selector.click();
-                counter = 1;
+	        if (loadMoreButton && !alreadyClicked) {
+	        	loadMoreButton.click();
+                alreadyClicked = true;
 	        }
 	    }        
 	};
