@@ -1,30 +1,29 @@
-(function(){
+{
 	'use strict';
 
-	// initialize url
-	let currentUrl = location.href;
+	// need to click again if on a new profile
+	let currentPath = location.pathname;
 
-	// only need to click once
+	// only need to perform initial 'load more' click
     let alreadyClicked = false;
 
-    const selector = '#react-root > section > main > article > div > a';
+	const selector = '#react-root > section > main > article > div > a';
 
-    // try to load selector in case we're already on a profile page
-    let loadMoreButton = document.querySelector(selector);
+	window.onscroll = () => {
+		// only profile pages need a click
+		if (location.pathname === '/') return;
 
-	window.onscroll = function() {
-	    if ((document.body.offsetHeight + document.body.scrollTop) === document.body.scrollHeight){
-	    	//if url has changed, reset currentUrl and selector
-	    	if (currentUrl !== location.href){
+		if ((document.body.offsetHeight + document.body.scrollTop) === document.body.scrollHeight) {
+	    	if (currentPath !== location.pathname) {
                 alreadyClicked = false;
-	    		currentUrl = location.href;
-	    		loadMoreButton = document.querySelector(selector);
+	    		currentUrl = location.pathname;
 	    	}
 
-	        if (loadMoreButton && !alreadyClicked) {
-	        	loadMoreButton.click();
+	        if (!alreadyClicked) {
+				// must call querySelector here or element ends up null
+				document.querySelector(selector).click();
                 alreadyClicked = true;
 	        }
-	    }        
+	    }
 	};
-})();
+}
