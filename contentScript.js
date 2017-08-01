@@ -13,7 +13,7 @@
 		// only profile pages need a click
 		if (location.pathname === '/') return;
 
-		if ((document.body.offsetHeight + document.body.scrollTop) === document.body.scrollHeight) {
+		if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
 	    	if (currentPath !== location.pathname) {
                 alreadyClicked = false;
 	    		currentUrl = location.pathname;
